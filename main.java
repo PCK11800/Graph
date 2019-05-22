@@ -67,6 +67,7 @@ public class Main{
             System.out.println("No graph type inputted. Shutting down.");
         }
 
+        System.out.println();
         System.out.println("Set arcs. Enter starting node before end node.");
         System.out.println("Repeat until done. End by entering end twice.");
 

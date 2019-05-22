@@ -14,11 +14,23 @@ public class Main{
     //Arc
     public static Arc arc = new Arc();
 
+    //Relationship 2d array
+    public static String[][] relationArray;
+
     public void setNodes(){
         System.out.println("How many nodes in the graph?");
 
         Scanner scanner = new Scanner(System.in);
         int numofNodes = scanner.nextInt();
+        
+        //Set relationArray size
+        relationArray = new String[numofNodes + 1][numofNodes + 1];
+        //Fill array with zeroes
+        for (String[] row : relationArray){
+            Arrays.fill(row, "0");
+        }
+
+        relationArray[0][0] = "~";
 
         System.out.println("Set the name of your nodes.");
         //Add nodes to node Arraylist
@@ -26,6 +38,10 @@ public class Main{
             String name = scanner.next();
             Node node = new Node(name, i);
             nodes.add(node);    //Add this specific node to arrayList
+
+            //Add node to relation array
+            relationArray[0][i+1] = name;
+            relationArray[i+1][0] = name;
         }
 
         System.out.println("All Nodes Set!");
@@ -52,7 +68,7 @@ public class Main{
         }
 
         System.out.println("Set arcs. Enter starting node before end node.");
-        System.out.println("Repeat until done. End by entering non-int twice.");
+        System.out.println("Repeat until done. End by entering end twice.");
 
         System.out.println("Name, ID");
 
@@ -63,16 +79,23 @@ public class Main{
 
             System.out.println(nodeName + ", " + nodeID);
         }
+        System.out.println("");
 
         boolean endofInput = false;
         while(!endofInput){
             String nodeOne = scanner.next();
+            System.out.println("to");
             String nodeTwo = scanner.next();
+            System.out.println("");
         
             if(nodeOne.equals("end") && nodeTwo.equals("end")){
-                scanner.close();
-
+                mainArena.update();
+                System.out.println("");
+                System.out.println("Relation Table");
+                System.out.println("The nodes on the left is directed to those on the top.");
+                System.out.println("");
                 //Print arcs
+                System.out.println(Arrays.deepToString(relationArray).replace("], ", "]\n").replace("[[", "[").replace("]]", "]"));
             }
             else{
                 try{
@@ -85,6 +108,10 @@ public class Main{
                     else if(graphType.equals("directed")){
                         arc.addDirectedArc(nodeOneINT, nodeTwoINT);
                     }
+
+                    //Add one to relationArray
+                    relationArray[nodeOneINT + 1][nodeTwoINT + 1] = "1";
+
                 }catch(NumberFormatException nfe){
                     scanner.close();
                     mainArena.update();

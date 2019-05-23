@@ -7,6 +7,12 @@ public class Node extends Main{
         ID = id;
     }
 
+    //Colour
+    private Random random = new Random();
+    private String[] colourArray = {"AQUA", "GOLD", "CYAN", "GRAY", "RED", "BLUE", "SILVER", "YELLOW"};
+    private int colorInt = random.nextInt(colourArray.length);
+    private String colour = colourArray[colorInt];
+
     //Node
     Ball node;
     private int ID;
@@ -17,7 +23,6 @@ public class Node extends Main{
     private double x_location;
     private double y_location;
     private double diameter = 25;
-    private String colour = "AQUA";
 
     //Create Node
     public void addNode(){

@@ -16,17 +16,23 @@ public class Arc extends Main{
     static double slope_var_x;
     static double slope_var_y;
 
+    //Colour
+    private Random random = new Random();
+    private String[] colourArray = {"AQUA", "GOLD", "CYAN", "GRAY", "RED", "BLUE", "SILVER", "YELLOW"};
+    private int colorInt = random.nextInt(colourArray.length);
+    private String colour = colourArray[colorInt];
+
     //Create simple non-directed arc
     private void createArc(double x1_pos, double y1_pos, double x2_pos, double y2_pos){
-        Line arc = new Line(x1_pos, y1_pos, x2_pos, y2_pos, 2, "RED");
+        Line arc = new Line(x1_pos, y1_pos, x2_pos, y2_pos, 2, colour);
         mainArena.addLine(arc);
     }
 
     //Create a directed arc from 1_pos towards 2_pos
     private void createDirectedArc(double x1_pos, double y1_pos, double x2_pos, double y2_pos){
         set_slope_var(x1_pos, y1_pos, x2_pos, y2_pos);
-        Line arc_body = new Line(x1_pos, y1_pos, x2_pos - slope_var_x, y2_pos - slope_var_y, 2, "RED");
-        Arrow arc_head = new Arrow(x2_pos - slope_var_x, y2_pos - slope_var_y, x2_pos, y2_pos, 2, "RED", mainArena);
+        Line arc_body = new Line(x1_pos, y1_pos, x2_pos - slope_var_x, y2_pos - slope_var_y, 2, colour);
+        Arrow arc_head = new Arrow(x2_pos - slope_var_x, y2_pos - slope_var_y, x2_pos, y2_pos, 2, colour, mainArena);
         mainArena.addLine(arc_body);
     }
 

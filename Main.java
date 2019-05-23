@@ -16,6 +16,9 @@ public class Main{
     public static String[] connectedArray;
     public static String[][] graphArray;
 
+    //Name to arrayList element array
+    public static String[] nameArray;
+
     //Variables
     public static int arc_id = 0;
 
@@ -30,6 +33,7 @@ public class Main{
         //Set array size
         relationArray = new String[numNodes + 1][numNodes + 1];
         graphArray = new String[numNodes + 1][numNodes + 1];
+        nameArray = new String[numNodes];
 
         //Setup relationArray
         for(String[] row : relationArray){
@@ -57,6 +61,9 @@ public class Main{
             //Add node to graphArray
             graphArray[0][i+1] = name;
             graphArray[i+1][0] = name;
+
+            //Add name to nameArray
+            nameArray[i] = name;
         }
         System.out.println("All Nodes Set!");
     }
@@ -85,14 +92,14 @@ public class Main{
         System.out.println();
         System.out.println("Set arcs. Enter starting node before end node.");
         System.out.println("Repeat until done. End by entering end twice.");
-        System.out.println("Name, ID");
+        System.out.println("");
+        System.out.println("Nodes");
 
-        //Show nodes and their ID from arrayList
+        //Show nodes
         for(int i = 0; i < numNodes; i++){
             String nodeName = nodes.get(i).returnName();
-            int nodeID = nodes.get(i).returnID();
 
-            System.out.println(nodeName + ", " + nodeID);
+            System.out.print(nodeName + " ");
         }
         System.out.println("");
 
@@ -113,8 +120,8 @@ public class Main{
             else{
                 //Add connection to nodes
                 try{
-                    int fromNodeINT = Integer.parseInt(fromNode);
-                    int toNodeINT = Integer.parseInt(toNode);
+                    int fromNodeINT = findIndex(nameArray, fromNode);
+                    int toNodeINT = findIndex(nameArray, toNode);
 
                     //Add simple arc or directed arc
                     if(graphType.equals("simple")){
@@ -169,6 +176,29 @@ public class Main{
             System.out.println("Node " + nodeName + " is connected with: ");
             System.out.println(Arrays.toString(connectedArray));
         }
+    }
+
+    private int findIndex(String arr[], String t){
+        //If array is Null
+        if (arr == null){
+            return -1;
+        }
+
+        //Find length of array
+        int length = arr.length;
+        int i = 0;
+
+        //Traverse array
+        while (i < length){
+            //If i-th element is t, return index
+            if(arr[i].equals(t)){
+                return i;
+            }
+            else{
+                i++;
+            }
+        }
+        return -1;
     }
 
     //End function

@@ -14,6 +14,7 @@ public class Main{
     //Node Relations array
     public static String[][] relationArray;
     public static String[] connectedArray;
+    public static String[][] graphArray;
 
     //Variables
     public static int arc_id = 0;
@@ -28,11 +29,19 @@ public class Main{
 
         //Set array size
         relationArray = new String[numNodes + 1][numNodes + 1];
+        graphArray = new String[numNodes + 1][numNodes + 1];
+
         //Setup relationArray
         for(String[] row : relationArray){
             Arrays.fill(row, "0");
         }
         relationArray[0][0] = "~";
+
+        //Setup graphArray
+        for(String[] row : graphArray){
+            Arrays.fill(row, "0");
+        }
+        graphArray[0][0] = "~";
 
         //Name nodes and add them to arrayList
         System.out.println("Set the name of your nodes. Single letter/digit only.");
@@ -44,6 +53,10 @@ public class Main{
             //Add node to relationArray
             relationArray[0][i+1] = name;
             relationArray[i+1][0] = name;
+
+            //Add node to graphArray
+            graphArray[0][i+1] = name;
+            graphArray[i+1][0] = name;
         }
         System.out.println("All Nodes Set!");
     }
@@ -118,6 +131,10 @@ public class Main{
                     //Modifiy relationArray
                     relationArray[toNodeINT + 1][fromNodeINT + 1] = "1";
 
+                    //Modify graphArray
+                    graphArray[toNodeINT + 1][fromNodeINT + 1] = "1";
+                    graphArray[fromNodeINT + 1][toNodeINT + 1] = "1";
+
                     //Modify connectedWith ArrayList
                     if(fromNodeINT == toNodeINT){
                         nodes.get(fromNodeINT).addConnection(nodes.get(toNodeINT));
@@ -158,11 +175,16 @@ public class Main{
     private void end(){
         mainArena.update();
         System.out.println("");
-        System.out.println("Directed Relation Table");
-        System.out.println("The nodes on the left is directed to those on the top.");
+        System.out.println("Simple Relation Table");
+
+        //Print graphArray
         System.out.println("");
+        System.out.println(Arrays.deepToString(graphArray).replace("], ", "]\n").replace("[[", "[").replace("]]", "]"));
 
         //Print relationArray
+        System.out.println("");
+        System.out.println("Directed Relation Table");
+        System.out.println("The nodes on the left is directed to those on the top.");
         System.out.println(Arrays.deepToString(relationArray).replace("], ", "]\n").replace("[[", "[").replace("]]", "]"));
         System.out.println("");
 

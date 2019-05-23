@@ -9,26 +9,22 @@ public class Node extends Main{
 
     //Node
     Ball node;
-
-    //Node ID for arrayList
-    int ID;
-
-    //RNG
-    Random rand = new Random();
-
-    //Variables of each node
-    private double x_location;        
-    private double y_location;
+    private int ID;
     private String name;
+    private ArrayList<Node> connectedWith = new ArrayList<Node>();
+
+    //Variables
+    private double x_location;
+    private double y_location;
     private double diameter = 25;
     private String colour = "AQUA";
 
-    //Constructor
+    //Create Node
     public void addNode(){
+        Random rand = new Random();
         x_location = rand.nextInt(900) + 50;
         y_location = rand.nextInt(900) + 50;
 
-        //Create a node
         node = new Ball(x_location, y_location, diameter, colour);
         mainArena.addBall(node);
 
@@ -37,7 +33,7 @@ public class Node extends Main{
         mainArena.addText(nodeName);
     }
 
-    //Return xloc and yloc
+    //Return location
     public double returnXPosition(){
         double x_pos = node.getXPosition();
         return x_pos;
@@ -48,7 +44,7 @@ public class Node extends Main{
         return y_pos;
     }
 
-    //Return ID
+    //Return name, ID
     public int returnID(){
         return ID;
     }
@@ -56,4 +52,33 @@ public class Node extends Main{
     public String returnName(){
         return name;
     }
+
+    //List Operations
+    public void addConnection(Node n){
+        connectedWith.add(n);
+    }
+
+    public void removeConnection(Node n){
+        connectedWith.remove(n);
+    }
+
+    //Return connected nodes names to an connectedArray
+    public void returnConnections(){
+        int connectionNum = connectedWith.size();
+        for(int i = 0; i < connectionNum; i++){
+            String name = connectedWith.get(i).returnName();
+            connectedArray[i] = name;
+        }
+    }
+
+    //Check if connection exist with another node
+    public boolean connectionExist(Node n){
+        if (connectedWith.contains(n)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
 }

@@ -71,6 +71,12 @@ public class Node extends Main{
         }
     }
 
+    //Return total amount of connections
+    public int returnConnectionsNumber(){
+        int connectionNum = connectedWith.size();
+        return connectionNum;
+    }
+
     //Check if connection exist with another node
     public boolean connectionExist(Node n){
         if (connectedWith.contains(n)){

@@ -34,9 +34,7 @@ public class Arc extends Main{
         //Set off in a random direction
         Random rand = new Random();
         int direction_first = (rand.nextInt(30) + 20) * (rand.nextBoolean() ? -1 : 1); 
-        System.out.println(direction_first);
         int direction_second = (rand.nextInt(30) + 10) * (rand.nextBoolean() ? -1 : 1);
-        System.out.println(direction_second); 
         double direction_double_first = 1.0 * direction_first; //convert to double
         double direction_double_second = 1.0 * direction_second;
 
@@ -53,9 +51,7 @@ public class Arc extends Main{
         //Set off in a random direction
         Random rand = new Random();
         int direction_first = (rand.nextInt(30) + 20) * (rand.nextBoolean() ? -1 : 1); 
-        System.out.println(direction_first);
         int direction_second = (rand.nextInt(30) + 10) * (rand.nextBoolean() ? -1 : 1);
-        System.out.println(direction_second); 
         double direction_double_first = 1.0 * direction_first; //convert to double
         double direction_double_second = 1.0 * direction_second;
 
@@ -70,7 +66,7 @@ public class Arc extends Main{
     //This set the arrowhead direction
     private void set_slope_var(double x1_pos, double y1_pos, double x2_pos, double y2_pos){
         double gradient = (x1_pos - x2_pos) / (y2_pos - y1_pos);
-        double size = 0.1;
+        double size = 0.25;
 
         //towards bottom-right
         if((x2_pos > x1_pos) && (y2_pos > y1_pos)){

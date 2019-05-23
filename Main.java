@@ -26,9 +26,8 @@ public class Main{
         Scanner scanner = new Scanner(System.in);
         int numNodes = scanner.nextInt();
 
-        //Set arrays size
+        //Set array size
         relationArray = new String[numNodes + 1][numNodes + 1];
-        connectedArray = new String[numNodes];
         //Setup relationArray
         for(String[] row : relationArray){
             Arrays.fill(row, "0");
@@ -96,13 +95,7 @@ public class Main{
 
             //When completed
             if(fromNode.equals("end") && toNode.equals("end")){
-                mainArena.update();
-                System.out.println("");
-                System.out.println("Relation Table");
-                System.out.println("The nodes on the left is directed to those on the top.");
-                System.out.println("");
-                //Print relationArry
-                System.out.println(Arrays.deepToString(relationArray).replace("], ", "]\n").replace("[[", "[").replace("]]", "]"));
+                end();
             }
             else{
                 //Add connection to nodes
@@ -126,8 +119,14 @@ public class Main{
                     relationArray[toNodeINT + 1][fromNodeINT + 1] = "1";
 
                     //Modify connectedWith ArrayList
-                    nodes.get(fromNodeINT).addConnection(nodes.get(toNodeINT));
-                    nodes.get(toNodeINT).addConnection(nodes.get(fromNodeINT));
+                    if(fromNodeINT == toNodeINT){
+                        nodes.get(fromNodeINT).addConnection(nodes.get(toNodeINT));
+                    }
+                    else{
+                        nodes.get(fromNodeINT).addConnection(nodes.get(toNodeINT));
+                        nodes.get(toNodeINT).addConnection(nodes.get(fromNodeINT));
+                    }
+
                 }catch(NumberFormatException nfe){
                     //Do Nothing
                 }catch(IllegalStateException ise){
@@ -139,10 +138,43 @@ public class Main{
         scanner.close();
     }
 
+    //Print node connections
+    public void printNodeConnections(){
+        int numNodes = nodes.size();
+        for(int i = 0; i < numNodes; i++){
+            
+            int connectedNum = nodes.get(i).returnConnectionsNumber();
+            connectedArray = new String[connectedNum];
+
+            nodes.get(i).returnConnections();
+            String nodeName = nodes.get(i).returnName(); 
+
+            System.out.println("Node " + nodeName + " is connected with: ");
+            System.out.println(Arrays.toString(connectedArray));
+        }
+    }
+
+    //End function
+    private void end(){
+        mainArena.update();
+        System.out.println("");
+        System.out.println("Directed Relation Table");
+        System.out.println("The nodes on the left is directed to those on the top.");
+        System.out.println("");
+
+        //Print relationArray
+        System.out.println(Arrays.deepToString(relationArray).replace("], ", "]\n").replace("[[", "[").replace("]]", "]"));
+        System.out.println("");
+
+        //Print connections
+        printNodeConnections();
+    }
+
     public static void main(String[] args){
         main.setNodes();
         main.printNodes();
         main.addArcs();
+        main.printNodeConnections();
         mainArena.update();
     }
 }

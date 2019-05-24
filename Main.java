@@ -254,7 +254,7 @@ public class Main{
         return -1;
     }
 
-    //MAIN LOGIN FUNCTION
+    //MAIN LOGIC FUNCTION
     public void mainLogic(){
         setNodes();
         setGraphType();

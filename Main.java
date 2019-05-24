@@ -117,6 +117,7 @@ public class Main{
 
         //newline to make terminal look prettier
         System.out.println("");
+        System.out.println("");
         
         while(true){
 

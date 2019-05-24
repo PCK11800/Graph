@@ -22,6 +22,7 @@ public class Main{
     //Variables
     private static int numNodes;
     private static String graphType;
+    public static int numArcs = 0;
 
     //MLF - Function to set(add) nodes to program.
     public void setNodes(){
@@ -143,10 +144,12 @@ public class Main{
             if(graphType.equals("simple")){
                 Arc arc = new Arc();
                 arc.addArc(fromNodeINT, toNodeINT);
+                numArcs++;
             }
             else if (graphType.equals("directed")){
                 Arc arc = new Arc();
                 arc.addDirectedArc(fromNodeINT, toNodeINT);
+                numArcs++;
             }
 
             //Add relation to drA, rA and adjacencyMatrix

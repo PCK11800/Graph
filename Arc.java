@@ -5,7 +5,11 @@ public class Arc extends Main{
     //Variables
     static double slope_var_x;
     static double slope_var_y;
-    private String colour = "YELLOW";
+    static double size = 0.25;
+
+    //Colours
+    static String[] colourArray = {"BLUE", "BROWN", "WHITE", "GREEN", "LIME", "ORANGE", "SALMON", "SILVER", "LINENE", "IVORY", "LAVENDER"};
+    private String colour = colourArray[numArcs];
 
     //Create simple non-directed arc
     private void createArc(double x1_pos, double y1_pos, double x2_pos, double y2_pos){
@@ -56,7 +60,6 @@ public class Arc extends Main{
 
     //This set the arrowhead direction
     private void set_slope_var(double x1_pos, double y1_pos, double x2_pos, double y2_pos){
-        double size = 0.25;
 
         //towards bottom-right
         if((x2_pos > x1_pos) && (y2_pos > y1_pos)){

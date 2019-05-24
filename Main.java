@@ -199,7 +199,13 @@ public class Main{
         String nodeName = scanner.next();
         //Code to do DFT and BFT
         int startingNodeID = findIndex(nodeName);
+
+        System.out.println("DFT:");
         dfs.depthFirstTraversal(adjacencyMatrix, startingNodeID);
+
+        System.out.println("");
+        
+        System.out.println("BFT");
         bfs.breadthFirstTraversal(adjacencyMatrix, startingNodeID);
 
 

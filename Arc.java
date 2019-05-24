@@ -2,12 +2,6 @@ import java.util.*;
 
 public class Arc extends Main{
 
-    //Constructor
-    public Arc(String input_type, int input_ID){
-        type = input_type;
-        ID = input_ID;
-    }
-
     //Arc name, ID and type
     static int ID;
     static String type;
@@ -71,7 +65,6 @@ public class Arc extends Main{
 
     //This set the arrowhead direction
     private void set_slope_var(double x1_pos, double y1_pos, double x2_pos, double y2_pos){
-        double gradient = (x1_pos - x2_pos) / (y2_pos - y1_pos);
         double size = 0.25;
 
         //towards bottom-right

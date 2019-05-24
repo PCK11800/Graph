@@ -29,9 +29,9 @@ public class Arc extends Main{
         double direction_double_first = 1.0 * direction_first; //convert to double
         double direction_double_second = 1.0 * direction_second;
 
-        Line arc_part1 = new Line(x_pos, y_pos, x_pos + direction_double_first, y_pos + direction_double_first, 2, "RED");
+        Line arc_part1 = new Line(x_pos, y_pos, x_pos + direction_double_first, y_pos + direction_double_first, 2, colour);
         Line arc_part2 = new Line(x_pos + direction_double_first, y_pos + direction_double_first, x_pos - direction_double_second, y_pos + direction_double_second, 2, "RED");
-        Line arc_part3 = new Line(x_pos - direction_double_second, y_pos + direction_double_second, x_pos, y_pos, 2, "RED");
+        Line arc_part3 = new Line(x_pos - direction_double_second, y_pos + direction_double_second, x_pos, y_pos, 2, colour);
 
         mainArena.addLine(arc_part1);
         mainArena.addLine(arc_part2);
@@ -46,8 +46,8 @@ public class Arc extends Main{
         double direction_double_first = 1.0 * direction_first; //convert to double
         double direction_double_second = 1.0 * direction_second;
 
-        Line arc_part1 = new Line(x_pos, y_pos, x_pos + direction_double_first, y_pos + direction_double_first, 2, "RED");
-        Line arc_part2 = new Line(x_pos + direction_double_first, y_pos + direction_double_first, x_pos - direction_double_second, y_pos + direction_double_second, 2, "RED");
+        Line arc_part1 = new Line(x_pos, y_pos, x_pos + direction_double_first, y_pos + direction_double_first, 2, colour);
+        Line arc_part2 = new Line(x_pos + direction_double_first, y_pos + direction_double_first, x_pos - direction_double_second, y_pos + direction_double_second, 2, colour);
         createDirectedArc(x_pos - direction_double_second, y_pos + direction_double_second, x_pos, y_pos);
 
         mainArena.addLine(arc_part1);

@@ -8,10 +8,7 @@ public class Node extends Main{
     }
 
     //Colour
-    private Random random = new Random();
-    private String[] colourArray = {"AQUA", "GOLD", "CYAN", "GRAY", "RED", "BLUE", "SILVER", "YELLOW"};
-    private int colorInt = random.nextInt(colourArray.length);
-    private String colour = colourArray[colorInt];
+    private String colour = "AQUA";
 
     //Node
     Ball node;
@@ -90,6 +87,11 @@ public class Node extends Main{
         else{
             return false;
         }
+    }
+
+    //Set colour
+    public void setColour(String inputColour){
+        node.setColour(inputColour);
     }
 
 }

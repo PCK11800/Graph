@@ -208,6 +208,17 @@ public class Main{
         System.out.println("BFT");
         bfs.breadthFirstTraversal(adjacencyMatrix, startingNodeID);
 
+        System.out.println("");
+
+        //Do DFT or BFT VISUALLY
+        System.out.println("Which one visually: DFT or BFT?");
+        String visualChoice = scanner.next();
+        if(visualChoice.equals("DFT")){
+            dfs.depthFirstTraversalVisual(adjacencyMatrix, startingNodeID);
+        }
+        else if(visualChoice.equals("BFT")){
+            bfs.breadthFirstTraversalVisual(adjacencyMatrix, startingNodeID);
+        }
 
         //Close the scanner!
         scanner.close();

@@ -2,19 +2,10 @@ import java.util.*;
 
 public class Arc extends Main{
 
-    //Arc name, ID and type
-    static int ID;
-    static String type;
-
     //Variables
     static double slope_var_x;
     static double slope_var_y;
-
-    //Colour
-    private Random random = new Random();
-    private String[] colourArray = {"AQUA", "GOLD", "CYAN", "GRAY", "RED", "BLUE", "SILVER", "YELLOW"};
-    private int colorInt = random.nextInt(colourArray.length);
-    private String colour = colourArray[colorInt];
+    private String colour = "YELLOW";
 
     //Create simple non-directed arc
     private void createArc(double x1_pos, double y1_pos, double x2_pos, double y2_pos){
